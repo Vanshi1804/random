@@ -1,0 +1,36 @@
+{{>navbar}}
+
+<section class="d-flex justify-content-around mt-4">
+
+    <div class="card " style="width: 18rem;">
+        <img src="{{product.img}}" class="card-img-top" style="height: 17rem;" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <h5 class="card-title">{{product.price}}</h5>
+            <p class="card-text">{{product.desc}}</p>
+            {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+        </div>
+    </div>
+
+    <div>
+        <form action="/product/{{product._id}}/addreviews">
+            <h1>Add Review</h1>
+            <label for="rating">Rating:-</label>
+            <input type="range" min="0" max="5" id="rating" name="rating"><br>
+
+            <label for="comment">comment:-</label>
+            <input type="text" id="comment" name="comment">
+            <button class="btn btn-primary">Submit</button>
+
+            <div>
+                {{#each product.reviews}}
+               <div class="card mt-2">
+                 <h5 class="card-title">{{this.rating}}</h5>
+                <p class="card-body">{{this.comment}}</p>
+               </div>
+                {{/each}}
+            </div>
+        </form>
+    </div> 
+
+</section>
